@@ -32,10 +32,6 @@ body {
     height: 100vh;
 }
 
-#container {
-    width: 90vw;
-    max-width: 700px;
-}
 
 body {
     background: var(--color-background);
@@ -50,4 +46,15 @@ button,
 textarea {
     font: 500 1.5rem Poppins;
     color: var(--color-text-base);
+}
+
+#container {
+    width: 90vw;
+    max-width: 700px;
+}
+
+@media (min-width: 700px) {
+    :root {
+        font-size: 62.5% /* todo 1rem vai ser relativo a 10px */
+    }
 }
