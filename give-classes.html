@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Proffy | Sua plataforma de estudos online</title>
+
     <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/partials/header.css">
+    <link rel="stylesheet" href="/styles/partials/forms.css">
     <link rel="stylesheet" href="/styles/partials/page-give-classes.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+
+    <script src="/scripts/addField.js" defer></script>
 </head>
 <body id="page-give-classes">
     <div id="container">
@@ -23,85 +29,89 @@
             </div>
         </header>
         <main>
-            <form id="register-teacher">
+            <form id="create-class">
+                <fieldset>
+                    <legend>Seus dados</legend>
 
-                <p>Seus dados</p>
-                <hr>
-                <div class="input-block">
-                    <label for="name">Nome completo</label>
-                    <input name="name" id="name" type="text" >
-                </div>
-                <div class="input-block">
-                    <label for="link">Link da sua foto</label>
-                    <label for="link" id="second-label">(comece com //http)</label>
-                    <input name="link" id="link" type="text" >
-                </div>
-                <div class="input-block">
-                    <label for="whatsapp">Whatsapp</label>
-                    <label for="whatsapp" id="second-label">(somente números)</label>
-                    <input name="whatsapp" id="whatsapp" type="text" >
-                </div>
-                <div class="input-block">
-                    <label for="biography">Biografia</label>
-                    <input name="biography" id="biography" type="text" >
-                </div>
-    
-                <p>Sobre a aula</p>
-                <hr>
-                <div class="select-block">
-                    <label for="subject">Matéria</label>
-                        <select name="subject" id="subject">
-                            <option value="" hidden="">Selecione qual você quer ensinar</option>
-                            <option value="1">Artes</option>
-                            <option value="2">Biologia</option>
-                            <option value="3">Ciências</option>
-                            <option value="4">Educação física</option>
-                            <option value="5">Física</option>
-                            <option value="6">Geografia</option>
-                            <option value="7">História</option>
-                            <option value="8">Matemática</option>
-                            <option value="9">Português</option>
-                            <option value="10">Química</option>
-                        </select>
-                </div>
-                <div class="input-block">
-                    <label for="biography">Custo da sua hora por aula</label>
-                    <label for="whatsapp" id="second-label">(em R$)</label>
-                    <input name="biography" id="biography" type="text" >
-                </div>
-
-                <p>Horários disponíveis</p>
-                <hr>
-                <div class="select-block">
-                    <label for="weekday">Dia da semana</label>
-                    <select name="weekday" id="weekday">
-                        <option value="" hidden="">Selecione o dia</option>
-                        <option value="0">Domingo</option>
-                        <option value="1">Segunda-feira</option>
-                        <option value="2">Terça-feira</option>
-                        <option value="3">Quarta-feira</option>
-                        <option value="4">Quinta-feira</option>
-                        <option value="5">Sexta-feira</option>
-                        <option value="6">Sábado</option>
-                    </select>
-                </div>
-                <div class="input-block">
-                    <label for="biography">Das</label>
-                    <input name="biography" id="biography" type="text" >
-                </div>
-                <div class="input-block">
-                    <label for="biography">Até</label>
-                    <input name="biography" id="biography" type="text" >
-                </div>
-                <footer>
-                    <div class="fotter-text">
-                        <p>Importante!</p>
-                        <p>Preencha todos os dados</p>
-                        <img src="/images/icons/warning.svg" alt="">
+                    <div class="input-block">
+                        <label for="name">Nome completo</label>
+                        <input name="name" id="name" required>
                     </div>
-                    <button type="submit">Filtrar</button>
-                </footer>
+                    <div class="input-block">
+                        <label for="avatar">Link da sua foto <small>(comece com https://)</small></label>
+                        <input name="avatar" id="avatar" type="url" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="whatsapp">Whatsapp <small>(somente números)</small></label>
+                        <input name="whatsapp" id="whatsapp" type="number" required>
+                    </div>
+                    <div class="textarea-block">
+                        <label for="bio">Biografia</label>
+                        <textarea name="bio" id="bio" required></textarea>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Sobre a aula</legend>
+
+                    <div class="select-block">
+                        <label for="subject">Matéria</label>
+                            <select name="subject" id="subject" required>
+                                <option value="" hidden="">Selecione qual você quer ensinar</option>
+                                <option value="1">Artes</option>
+                                <option value="2">Biologia</option>
+                                <option value="3">Ciências</option>
+                                <option value="4">Educação física</option>
+                                <option value="5">Física</option>
+                                <option value="6">Geografia</option>
+                                <option value="7">História</option>
+                                <option value="8">Matemática</option>
+                                <option value="9">Português</option>
+                                <option value="10">Química</option>
+                            </select>
+                    </div>
+                    <div class="input-block">
+                        <label for="cost">Custo da sua hora por aula <small>(em R$)</small></label>
+                        <input name="cost" id="cost" type="number" required>
+                    </div>
+                </fieldset>
+
+                <fieldset id="schedule-items">
+                    <legend>Horários disponíveis
+                        <button type="button" id="add-time">+Novo Horário</button>
+                    </legend>
+                    <div class="schedule-item">
+                        <div class="select-block">
+                            <label for="weekday">Dia da semana</label>
+                            <select name="weekday[]" required>
+                                <option value="" hidden="">Selecione o dia</option>
+                                <option value="0">Domingo</option>
+                                <option value="1">Segunda-feira</option>
+                                <option value="2">Terça-feira</option>
+                                <option value="3">Quarta-feira</option>
+                                <option value="4">Quinta-feira</option>
+                                <option value="5">Sexta-feira</option>
+                                <option value="6">Sábado</option>
+                            </select>
+                        </div>
+                        <div class="input-block">
+                            <label for="time_from">Das</label>
+                            <input name="time_from[]" type="time" required>
+                        </div>
+                        <div class="input-block">
+                            <label for="time_to">Até</label>
+                            <input name="time_to[]" type="time" required>
+                        </div>
+                    </div>
+                </fieldset>
             </form>
+            <footer>
+                <p>
+                    <img src="/images/icons/warning.svg" alt="Aviso importante">
+                    Importante! <br> Preencha todos os dados
+                </p>
+                <button type="submit" form="create-class">Salvar cadastro</button>
+            </footer>
         </main>
     </div>
 </body>
