@@ -75,7 +75,9 @@
                     </legend>
                     <div class="schedule-item">
                         <div class="select-block">
-                            <label for="weekday">Dia da semana</label>
+                            <label for="weekday">Dia da semana
+                                <button type="button" id="schedule-close-button" onclick="closeScheduleField(event)"></button>
+                            </label>
                             <select name="weekday[]" required>
                                 {%for weekday in weekdays %}
                                     <option value="{{loop.index0}}">{{weekday}}</option>
@@ -87,7 +89,9 @@
                             <input name="time_from[]" type="time" required>
                         </div>
                         <div class="input-block">
-                            <label for="time_to">Até</label>
+                            <label for="time_to">Até
+                                <button type="button" id="schedule-close-button" onclick="closeScheduleField(event)"></button>
+                            </label>
                             <input name="time_to[]" type="time" required>
                         </div>
                     </div>
@@ -103,4 +107,9 @@
         </main>
     </div>
 </body>
+<script>
+    function closeScheduleField(event) {
+        document.querySelector('#schedule-items').removeChild(event.path[3])
+    }
+</script>
 </html>
