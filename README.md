@@ -2,16 +2,16 @@
   <img src="https://ik.imagekit.io/capitao/Proffy/nlw2_6d7PvlHZ5.svg" width="150" >
 </h3>
 
-## 📋 Índice
+## Index
 
+- [Preview](#-Preview)
 - [About](#-About)
 - [Technologies used](#-Technologies-used)
 - [How run the project](#-How-run-the-project)
-- [Preview](#-Preview)
 
 ---
 
-## 🖥 Preview 
+## Preview 
 
 <p align="center">
   <img src="https://ik.imagekit.io/capitao/Proffy/final_1596781937_urgAUoPC-.jpg" width="700" >
@@ -19,7 +19,7 @@
 
 ---
 
-## 📖 About 
+## About 
 
 This was a project developed during the **[Next Level Week](https://nextlevelweek.com/)**, organized by **[@Rocketseat](https://github.com/Rocketseat)** during Aug 3 and 9 from 2020.
 
@@ -27,7 +27,7 @@ The proposed solution for this project, the Proffy plataform, is to find teacher
 
 --- 
 
-## 🚀 Technologies used
+## Technologies used
 
 Developed using the following technologies:
 
@@ -40,14 +40,14 @@ Developed using the following technologies:
 
 --- 
 
-## ⌨ How run the project
+## How run the project
 
 ```bash
 # Clone repository
-git clone https://github.com/Wes1738/Proffy
+git clone https://github.com/VitaoCs/next-level-week2020.git
 
 # Enter on directory
-cd proffy-discovery
+cd next-level-week2020
 
 # Install dependencies
 npm install
