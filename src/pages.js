@@ -13,9 +13,34 @@ function getLandingPage(req,res) {
 
 async function getStudyPage(req,res) {
     const filters = req.query
+    var noProffysOnDB = false
 
     if (!filters.subject || !filters.weekday || !filters.time) {
-        return res.render('study.html', { filters, subjects, weekdays })
+        const query = `
+            SELECT classes.*, proffys.*
+            FROM proffys
+            JOIN classes ON (classes.proffy_id = proffys.id)
+            WHERE EXISTS (
+                SELECT class_schedule.*
+                FROM class_schedule
+                WHERE class_schedule.class_id = classes.id
+            )
+        `
+
+        try {
+            const db = await dataBase
+            const proffys = await db.all(query)
+            proffys.map((proffy) => {
+                if (proffy.subject) proffy.subject = getSubject(proffy.subject)
+                else noProffysOnDB = true
+            })
+
+            if (noProffysOnDB) return res.render('study.html', { filters, subjects, weekdays })
+
+            return res.render('study.html', { proffys, filters, subjects, weekdays })
+        } catch (error) {
+            console.error(`Error searching study data on dataBase for page without query: ${error}`)
+        }
     }
 
     const timeInMinutes = convertHoursToMinutes(filters.time)
